@@ -1,0 +1,39 @@
+spring:
+  jpa:
+    database: postgresql
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+        format_sql: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/db_demo
+    username: postgres
+    password: 123456
+
+application:
+  backend:
+    errors:
+      EMPLOYEE_NOT_SAVE:
+        description: 'Error al guardar al empleado.'
+        category: INTERNAL_ERROR
+      EMPLOYEE_NOT_FOUND:
+        description: 'Empleado no encontrado.'
+        category: NOT_FOUND
+      EMPLOYEE_NOT_UPDATE:
+        description: 'Error al actualizar al empleado.'
+        category: INTERNAL_ERROR
+
+server:
+  port: 8081
+  error:
+    include-message: always
+
+logging:
+  level:
+    com.pe.relari.employee: TRACE

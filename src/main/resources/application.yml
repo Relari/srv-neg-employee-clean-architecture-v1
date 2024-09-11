@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: '@project.artifactId@'
+  profiles.active: local
+
+application:
+  info:
+    project:
+      title: 'Employee API'
+      name: '@project.name@'
+      version: '@project.version@'
+      description: '@project.description@'
+  api:
+    path: '/business/v1/employees'
