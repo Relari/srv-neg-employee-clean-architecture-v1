@@ -7,16 +7,18 @@ import pe.com.relari.employee.domain.model.Employee;
 import pe.com.relari.employee.domain.util.Utility;
 import pe.com.relari.employee.infrastructure.adapter.out.db.entity.EmployeeEntity;
 import lombok.AllArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.Base64;
 
 @Component
 @AllArgsConstructor
 public class EmployeeToEntityMapper {
 
-    PasswordEncoder passwordEncoder;
+//    PasswordEncoder passwordEncoder;
 
     /**
      * Mapea la entidad al empleado.
@@ -75,10 +77,11 @@ public class EmployeeToEntityMapper {
             .salary(employee.getCompany().getSalary())
 
             .username(username)
-            .password(passwordEncoder.encode(
-                    Utility.buildPassword(username, employee.getGender().name())
-            ))
-
+            .password(//passwordEncoder.encode(
+                    Base64.getEncoder().encodeToString(
+                            Utility.buildPassword(username, employee.getGender().name()).getBytes(StandardCharsets.UTF_8)
+                    )
+            )
             .build();
   }
 

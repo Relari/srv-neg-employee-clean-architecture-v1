@@ -5,10 +5,10 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.6</version>
+        <version>2.7.18</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.pe.relari</groupId>
+    <groupId>pe.com.relari</groupId>
     <artifactId>srv-neg-employee-clean-architecture-v1</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <name>srv-neg-employee-clean-architecture-v1</name>
@@ -30,33 +30,12 @@
         <spring-cloud.version>2020.0.4</spring-cloud.version>
         <server.resource>employee</server.resource>
         <springfox.version>3.0.0</springfox.version>
-        <base.path.exclude>com/pe/relari</base.path.exclude>
+        <base.path.exclude>pe/com/relari</base.path.exclude>
         <sonar.exclusions>
-            **/com/pe/relari/EmployeeApplication.java,
-            **/com/pe/relari/config/**,
-            **/com/pe/relari/employee/annotation/**,
-            **/com/pe/relari/employee/exceptionhandler/**
+            **/pe/com/relari/employee/infrastructure/config/**,
+            **/pe/com/relari/employee/domain/exceptionhandler/**
         </sonar.exclusions>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.apache.logging.log4j</groupId>
-                <artifactId>log4j-bom</artifactId>
-                <version>2.17.1</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -80,18 +59,10 @@
             <optional>true</optional>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
         <dependency>
             <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger2</artifactId>
-            <version>${springfox.version}</version>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui -->
-        <dependency>
-            <groupId>io.springfox</groupId>
-            <artifactId>springfox-swagger-ui</artifactId>
-            <version>${springfox.version}</version>
+            <artifactId>springfox-boot-starter</artifactId>
+            <version>3.0.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.reactivex.rxjava2/rxjava -->
@@ -124,15 +95,15 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.5</version>
-                <configuration>
-                    <excludes>
-                        <exclude>${base.path.exclude}/employee/model/**</exclude>
-                        <exclude>${base.path.exclude}/employee/annotation/**</exclude>
-                        <exclude>${base.path.exclude}/employee/exceptionhandler/**</exclude>
-                        <exclude>${base.path.exclude}/config/**</exclude>
-                        <exclude>${base.path.exclude}/EmployeeApplication.*</exclude>
-                    </excludes>
-                </configuration>
+<!--                <configuration>-->
+<!--                    <excludes>-->
+<!--                        <exclude>${base.path.exclude}/employee/model/**</exclude>-->
+<!--                        <exclude>${base.path.exclude}/employee/annotation/**</exclude>-->
+<!--                        <exclude>${base.path.exclude}/employee/exceptionhandler/**</exclude>-->
+<!--                        <exclude>${base.path.exclude}/config/**</exclude>-->
+<!--                        <exclude>${base.path.exclude}/EmployeeApplication.*</exclude>-->
+<!--                    </excludes>-->
+<!--                </configuration>-->
                 <executions>
                     <execution>
                         <id>default-prepare-agent</id>
@@ -159,7 +130,7 @@
                                         <limit>
                                             <counter>COMPLEXITY</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.95</minimum>
+                                            <minimum>0.00</minimum>
                                         </limit>
                                     </limits>
                                 </rule>

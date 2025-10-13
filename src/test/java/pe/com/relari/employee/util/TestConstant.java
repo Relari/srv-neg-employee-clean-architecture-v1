@@ -1,10 +1,8 @@
 package pe.com.relari.employee.util;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class TestConstant {
+
+    private TestConstant() {}
 
     public static final Integer idEmployee = 1;
     public static final String nombre = "Renzo";
